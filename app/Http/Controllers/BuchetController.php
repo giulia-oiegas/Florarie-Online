@@ -75,7 +75,11 @@ class BuchetController extends Controller
      */
     public function edit($id)
     {
-        //
+        //cautam buchetul - daca nu exista => error 404
+        $buchet = Buchet::findOrFail($id);
+
+        //trimitem datele catre view-ul de editare
+        return view('buchete.edit', compact('buchet'));
     }
 
     /**
@@ -87,7 +91,21 @@ class BuchetController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //validam datele din nou (poate se sterge pretul din greseala sau alte situatii)
+        $request->validate([
+            'nume' => 'required',
+            'pret' => 'required|numeric|min:0',
+            'tip_floare' => 'required',
+            'status' => 'required',
+        ]);
+
+        //gasim buchetul si actualizam datele
+        $buchet = Buchet::findOrFail($id);
+        $buchet->update($request->all());
+
+        //redirect la lista
+        return redirect()->route('buchete.index')
+                       ->with('success', 'Buchetul a fost actualizat!');
     }
 
     /**
@@ -98,6 +116,10 @@ class BuchetController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $buchet = Buchet::findOrFail($id);
+        $buchet->delete();
+
+        return redirect()->route('buchete.index')
+                         ->with('success', 'Buchetul a fost sters!');
     }
 }
