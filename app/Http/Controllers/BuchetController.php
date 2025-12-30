@@ -104,7 +104,7 @@ class BuchetController extends Controller
         $buchet->update($request->all());
 
         //redirect la lista
-        return redirect->route('buchete.index')
+        return redirect()->route('buchete.index')
                        ->with('success', 'Buchetul a fost actualizat!');
     }
 
