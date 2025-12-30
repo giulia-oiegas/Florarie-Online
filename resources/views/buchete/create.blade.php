@@ -16,7 +16,11 @@
 
     <div class="mb-3">
         <label class="form-label">Preț</label>
-        <input type="number" class="form-control" name="pret">
+    <input type="number"
+       name="pret"
+       class="form-control"
+       step="any"
+       value="{{ old('pret' }}">
     </div>
 
     <div class="mb-3">
@@ -24,7 +28,16 @@
         <select class="form-control" name="tip_floare">
             <option>Trandafiri</option>
             <option>Lalele</option>
+            <option>Bujori</option>
             <option>Crini</option>
+            <option>Crizanteme</option>
+            <option>Hortensii</option>
+            <option>Lalele</option>
+            <option>Magnolii</option>
+            <option>Orhidei</option>
+            <option>Trandafiri</option>
+            <option>Mix</option>
+            
         </select>
     </div>
 
@@ -34,11 +47,13 @@
     </div>
     <div class="mb-3">
     <label class="form-label">Status stoc</label>
-    <select name="stoc_status" class="form-control">
-        <option value="Disponibil" selected>Disponibil</option>
-        <option value="Stoc limitat">Stoc limitat</option>
-        <option value="Indisponibil">Indisponibil</option>
-    </select>
+    <select name="status" class="form-control">
+    <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>Disponibil</option>
+    <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>Stoc limitat</option>
+    <option value="2" {{ old('status') == '2' ? 'selected' : '' }}>Indisponibil</option>
+</select>
+
+
     </div>
 
     <button class="btn btn-mov">Salvează</button>

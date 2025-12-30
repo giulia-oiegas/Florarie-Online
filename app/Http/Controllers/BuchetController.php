@@ -45,6 +45,7 @@ class BuchetController extends Controller
             'nume' => 'required',
             'pret' => 'required|numeric|min:0', //pretul trebuie sa fie numar
             'tip_floare' => 'required',
+            'status' => 'required|in:0,1,2', //doar aceste valori sunt permise
             'imagine_url' => 'nullable|url', //link ul sa fie valid
             'descriere' => 'nullable',
         ]);
@@ -67,7 +68,7 @@ class BuchetController extends Controller
     {
         //cautam buchetul - daca nu exista => error 404
         $buchet = Buchet::findOrFail($id);
-        
+
         //trimitem datele catre view-ul de detalii
         return view('buchete.show', compact('buchet'));   
     }
@@ -96,22 +97,22 @@ class BuchetController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //validam datele din nou (poate se sterge pretul din greseala sau alte situatii)
         $request->validate([
             'nume' => 'required',
             'pret' => 'required|numeric|min:0',
             'tip_floare' => 'required',
-            'status' => 'required',
+            'status' => 'required|in:0,1,2',
+            'imagine_url' => 'nullable|url',
+            'descriere' => 'nullable',
         ]);
 
-        //gasim buchetul si actualizam datele
         $buchet = Buchet::findOrFail($id);
         $buchet->update($request->all());
 
-        //redirect la lista
         return redirect()->route('buchete.index')
-                       ->with('success', 'Buchetul a fost actualizat!');
+            ->with('success', 'Buchetul a fost actualizat!');
     }
+
 
     /**
      * Remove the specified resource from storage.

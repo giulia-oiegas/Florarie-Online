@@ -2,7 +2,7 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>@yield('title', 'Florărie Online')</title>
+    <title>@yield('title', 'Flori cu Sens')</title>
 
     <!-- Bootstrap (CDN) – exact ca în fișa profei -->
     <link rel="stylesheet"
@@ -26,7 +26,9 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#D5ACE6;">
     <div class="container">
-<a class="navbar-brand fw-semibold" href="#">Florărie Online</a>
+<a href="{{ route('buchete.index') }}" class="navbar-brand text-white text-decoration-none">
+    Flori cu Sens
+</a>
     </div>
 </nav>
 

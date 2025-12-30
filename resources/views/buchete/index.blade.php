@@ -26,7 +26,17 @@
             <td>{{ $buchet->nume }}</td>
             <td>{{ $buchet->pret }} lei</td>
             <td>{{ $buchet->tip_floare }}</td>
-            <td>{{ $buchet->stoc_status }}</td>
+            <td>
+            @if($buchet->status == 0)
+                Disponibil
+            @elseif($buchet->status == 1)
+                Stoc limitat
+            @elseif($buchet->status == 2)
+                Indisponibil
+            
+            @endif
+        </td>
+
             <td>
                 <a href="{{ route('buchete.show', $buchet->id) }}"
                    class="btn btn-outline-info btn-sm">View</a>
