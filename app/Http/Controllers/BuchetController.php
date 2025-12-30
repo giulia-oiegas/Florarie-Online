@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Buchet;
 use Illuminate\Http\Request;
 
+
 class BuchetController extends Controller
 {
     /**
@@ -64,7 +65,11 @@ class BuchetController extends Controller
      */
     public function show($id)
     {
-        //
+        //cautam buchetul - daca nu exista => error 404
+        $buchet = Buchet::findOrFail($id);
+        
+        //trimitem datele catre view-ul de detalii
+        return view('buchete.show', compact('buchet'));   
     }
 
     /**
