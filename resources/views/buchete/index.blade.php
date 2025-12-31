@@ -7,8 +7,8 @@
 <h2 class="mb-3">Lista Buchetelor</h2>
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <a href="{{ route('buchete.create') }}" class="btn btn-mov mb-3">
-    Adaugă buchet
+    <a href="{{ route('buchete.create') }}" class="btn btn-mov">
+        Adaugă buchet
     </a>
 
     <a href="{{ route('buchete.export') }}" class="btn btn-success">
