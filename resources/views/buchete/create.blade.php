@@ -11,49 +11,67 @@
 
     <div class="mb-3">
         <label class="form-label">Nume</label>
-        <input type="text" class="form-control" name="nume">
+      <input type="text" class="form-control @error('nume') is-invalid @enderror" name="nume" value="{{ old('nume') }}">
+      
+      @error('nume')
+            <div class="text-danger small">{{ $message }}</div>
+      @enderror
+    
     </div>
 
     <div class="mb-3">
         <label class="form-label">Preț</label>
     <input type="number"
        name="pret"
-       class="form-control"
+       class="form-control @error('pret') is-invalid @enderror"
        step="any"
-       value="{{ old('pret' }}">
+       value="{{ old('pret') }}">
+
+       @error('pret')
+            <div class="text-danger small">{{ $message }}</div>
+       @enderror
+       
     </div>
 
     <div class="mb-3">
         <label class="form-label">Tip floare</label>
-        <select class="form-control" name="tip_floare">
-            <option>Trandafiri</option>
-            <option>Lalele</option>
-            <option>Bujori</option>
-            <option>Crini</option>
-            <option>Crizanteme</option>
-            <option>Hortensii</option>
-            <option>Lalele</option>
-            <option>Magnolii</option>
-            <option>Orhidei</option>
-            <option>Trandafiri</option>
-            <option>Mix</option>
+       <select class="form-control @error('tip_floare') is-invalid @enderror" name="tip_floare">
+        <option value="Trandafiri" {{ old('tip_floare') == 'Trandafiri' ? 'selected' : '' }}>Trandafiri</option>
+        <option value="Lalele" {{ old('tip_floare') == 'Lalele' ? 'selected' : '' }}>Lalele</option>
+        <option value="Bujori" {{ old('tip_floare') == 'Bujori' ? 'selected' : '' }}>Bujori</option>
+        <option value="Crini" {{ old('tip_floare') == 'Crini' ? 'selected' : '' }}>Crini</option>
+        <option value="Crizanteme" {{ old('tip_floare') == 'Crizanteme' ? 'selected' : '' }}>Crizanteme</option>
+        <option value="Hortensii" {{ old('tip_floare') == 'Hortensii' ? 'selected' : '' }}>Hortensii</option>
+        <option value="Magnolii" {{ old('tip_floare') == 'Magnolii' ? 'selected' : '' }}>Magnolii</option>
+        <option value="Orhidei" {{ old('tip_floare') == 'Orhidei' ? 'selected' : '' }}>Orhidei</option>
+        <option value="Mix" {{ old('tip_floare') == 'Mix' ? 'selected' : '' }}>Mix</option>
+    </select>
             
         </select>
+        @error('tip_floare')
+            <div class="text-danger small">{{ $message }}</div>
+        @enderror
     </div>
 
     <div class="mb-3">
         <label class="form-label">URL Imagine</label>
-        <input type="text" class="form-control" name="imagine_url">
+       <input type="text" class="form-control @error('imagine_url') is-invalid @enderror" name="imagine_url" value="{{ old('imagine_url') }}">
+        @error('imagine_url')
+            <div class="text-danger small">{{ $message }}</div>
+        @enderror
     </div>
+
     <div class="mb-3">
     <label class="form-label">Status stoc</label>
-    <select name="status" class="form-control">
+    <select name="status" class="form-control @error('status') is-invalid @enderror">
     <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>Disponibil</option>
     <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>Stoc limitat</option>
     <option value="2" {{ old('status') == '2' ? 'selected' : '' }}>Indisponibil</option>
 </select>
 
-
+        @error('status')
+            <div class="text-danger small">{{ $message }}</div>
+        @enderror
     </div>
 
     <button class="btn btn-mov">Salvează</button>

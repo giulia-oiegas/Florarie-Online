@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+// Pentru funcția bonus
+Route::get('/export-buchete', [BuchetController::class, 'export'])->name('buchete.export'); 
 
 //aceasta linie creeaza toate rutele de crud
 Route::resource('buchete', BuchetController::class);
