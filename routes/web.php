@@ -22,3 +22,8 @@ Route::get('/export-buchete', [BuchetController::class, 'export'])->name('buchet
 
 //aceasta linie creeaza toate rutele de crud
 Route::resource('buchete', BuchetController::class);
+
+Route::post(
+    '/buchete/{id}/recenzii',
+    [BuchetController::class, 'storeRecenzie']
+)->name('buchete.recenzii.store');

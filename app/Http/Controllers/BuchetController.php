@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Buchet;
 use Illuminate\Http\Request;
+use App\Models\Recenzie;
 
 
 class BuchetController extends Controller
@@ -194,4 +195,23 @@ class BuchetController extends Controller
         return redirect()->route('buchete.index')
                          ->with('success', 'Buchetul a fost sters!');
     }
+
+    public function storeRecenzie(Request $request, $buchetId)
+{
+    $request->validate([
+        'nume_client' => 'required',
+        'text_recenzie' => 'required',
+        'nota' => 'required|integer|min:1|max:5',
+    ]);
+
+    Recenzie::create([
+        'nume_client' => $request->nume_client,
+        'text_recenzie' => $request->text_recenzie,
+        'nota' => $request->nota,
+        'buchet_id' => $buchetId,
+    ]);
+
+    return back()->with('success', 'Recenzia a fost adăugată!');
+}
+
 }
