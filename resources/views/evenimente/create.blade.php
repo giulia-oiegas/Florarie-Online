@@ -16,19 +16,30 @@
                     {{-- Nume Eveniment --}}
                     <div class="mb-3">
                         <label class="form-label fw-bold">Nume Eveniment</label>
-                        <input type="text" name="nume" class="form-control" placeholder="Ex: Atelier Coronițe" required>
+                        <input type="text" name="nume" class="form-control @error('nume') is-invalid @enderror" placeholder="Ex: Atelier Coronițe" value="{{ old('nume') }}" >
+                    
+                        @error('nume')
+                            <div class="text-danger small">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     {{-- Data și Ora --}}
                     <div class="mb-3">
                         <label class="form-label fw-bold">Data și Ora</label>
-                        <input type="datetime-local" name="data_eveniment" class="form-control" required>
+                        <input type="datetime-local" name="data_eveniment"class="form-control @error('data_eveniment') is-invalid @enderror" 
+                               value="{{ old('data_eveniment') }}">
+                               @error('data_eveniment')
+                            <div class="text-danger small">{{ $message }}</div>
+                              @enderror
                     </div>
 
                     {{-- Descriere --}}
                     <div class="mb-3">
                         <label class="form-label fw-bold">Descriere</label>
-                        <textarea name="descriere" class="form-control" rows="4" placeholder="Detalii despre eveniment..." required></textarea>
+                        <textarea name="descriere" class="form-control @error('descriere') is-invalid @enderror" rows="4" placeholder="Detalii despre eveniment..." >{{ old('descriere') }}</textarea>
+                        @error('descriere')
+                            <div class="text-danger small">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     {{-- Butoane Acțiune --}}

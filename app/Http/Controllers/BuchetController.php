@@ -68,9 +68,12 @@ class BuchetController extends Controller
             'descriere' => 'nullable',
         ],
         [
-           'pret.min' => 'Prețul nu poate fi negativ!', 
-           'pret.numeric' => 'Introdu doar cifre la preț.',
-           'nume.required' => 'Numele este obligatoriu.',
+        'pret.min' => 'Prețul nu poate fi negativ!', 
+        'pret.numeric' => 'Introdu doar cifre la preț.',
+        'nume.required' => 'Numele este obligatoriu.',
+        'tip_floare.required' => 'Te rugăm să alegi tipul florii.',
+        'imagine_url.url' => 'Link-ul imaginii nu este valid.',
+        'status.required' => 'Te rugăm să alegi statusul buchetului.',
         ]);
 
         //salvarea in bd - ia toate datele validate si face un rand nou in tabel
@@ -129,12 +132,13 @@ class BuchetController extends Controller
             'descriere' => 'nullable',
         ],
         [//mesaj la eroare
+            
         'pret.min' => 'Prețul nu poate fi negativ!', 
         'pret.numeric' => 'Introdu doar cifre la preț.',
         'nume.required' => 'Numele este obligatoriu.',
         'tip_floare.required' => 'Te rugăm să alegi tipul florii.',
         'imagine_url.url' => 'Link-ul imaginii nu este valid.',
-
+        'status.required' => 'Te rugăm să alegi statusul buchetului.',
         ]
     
     );
@@ -202,6 +206,13 @@ class BuchetController extends Controller
         'nume_client' => 'required',
         'text_recenzie' => 'required',
         'nota' => 'required|integer|min:1|max:5',
+    ],[
+        'nume_client.required' => 'Te rugăm să îți introduci numele.',
+        'text_recenzie.required' => 'Comentariul recenziei nu poate fi gol.',
+        'nota.required' => 'Te rugăm să acorzi o notă.',
+        'nota.integer' => 'Nota trebuie să fie un număr întreg.',
+        'nota.min' => 'Nota minimă pe care o poți oferi este 1.',
+        'nota.max' => 'Nota maximă pe care o poți oferi este 5.',
     ]);
 
     Recenzie::create([

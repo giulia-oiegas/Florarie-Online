@@ -28,6 +28,13 @@ class EvenimentController extends Controller
             'data_eveniment' => 'required|date',
             'descriere' => 'required',
             'locatie' => 'nullable|string'
+        ],[
+            'nume.required' => 'Numele evenimentului este obligatoriu.',
+            'nume.max' => 'Numele nu poate depăși 255 de caractere.',
+            'data_eveniment.required' => 'Trebuie să selectezi data evenimentului.',
+            'data_eveniment.date' => 'Formatul datei nu este valid.',
+            'descriere.required' => 'Te rugăm să adaugi o scurtă descriere.',
+            'locatie.string' => 'Locația trebuie să fie un text valid.',
         ]);
 
         //creare eveniment nou
@@ -58,7 +65,13 @@ class EvenimentController extends Controller
             'nume' => 'required',
             'data_eveniment' => 'required',
             'descriere' => 'required',
-        ]);
+        ],
+        [
+            'nume.required' => 'Te rugăm să introduci numele evenimentului.',
+            'data_eveniment.required' => 'Data evenimentului este obligatorie.',
+            'descriere.required' => 'Descrierea evenimentului nu poate lipsi.',
+            ]
+    );
 
         $eveniment = Eveniment::findOrFail($id);
         $eveniment->update($request->all());

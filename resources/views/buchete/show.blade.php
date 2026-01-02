@@ -46,21 +46,31 @@
 
     <div class="mb-2">
         <label>Nume</label>
-        <input type="text" name="nume_client" class="form-control">
+        <input type="text" name="nume_client" class="form-control @error('nume_client') is-invalid @enderror" 
+               value="{{ old('nume_client') }}">
+               @error('nume_client')
+            <div class="text-danger small">{{ $message }}</div>
+              @enderror
     </div>
 
     <div class="mb-2">
         <label>Recenzie</label>
-        <textarea name="text_recenzie" class="form-control"></textarea>
+        <textarea name="text_recenzie" class="form-control @error('text_recenzie') is-invalid @enderror">{{ old('text_recenzie') }}</textarea>
+        @error('text_recenzie')
+            <div class="text-danger small">{{ $message }}</div>
+        @enderror
     </div>
 
     <div class="mb-2">
         <label>Notă</label>
-        <select name="nota" class="form-control">
+        <select name="nota" class="form-control @error('nota') is-invalid @enderror">
             @for($i = 1; $i <= 5; $i++)
                 <option value="{{ $i }}">{{ $i }}</option>
             @endfor
         </select>
+        @error('nota')
+            <div class="text-danger small">{{ $message }}</div>
+        @enderror
     </div>
 
     <button class="btn btn-success btn-sm">Adaugă recenzie</button>
