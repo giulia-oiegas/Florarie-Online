@@ -14,11 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [BuchetController::class, 'index']);
+
 // Pentru funcția bonus
-Route::get('/export-buchete', [BuchetController::class, 'export'])->name('buchete.export'); 
+Route::get('/export-buchete', [BuchetController::class, 'export'])->name('buchete.export');
 
 //aceasta linie creeaza toate rutele de crud
 Route::resource('buchete', BuchetController::class);
