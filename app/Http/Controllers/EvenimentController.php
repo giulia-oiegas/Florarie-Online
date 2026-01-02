@@ -24,13 +24,13 @@ class EvenimentController extends Controller
     {
         //validare date
         $request->validate([
-            'nume' => 'required|max:255',
+            'nume_eveniment' => 'required|max:255',
             'data_eveniment' => 'required|date',
             'descriere' => 'required',
             'locatie' => 'nullable|string'
         ],[
-            'nume.required' => 'Numele evenimentului este obligatoriu.',
-            'nume.max' => 'Numele nu poate depăși 255 de caractere.',
+            'nume_eveniment.required' => 'Numele evenimentului este obligatoriu.',
+            'nume_eveniment.max' => 'Numele nu poate depăși 255 de caractere.',
             'data_eveniment.required' => 'Trebuie să selectezi data evenimentului.',
             'data_eveniment.date' => 'Formatul datei nu este valid.',
             'descriere.required' => 'Te rugăm să adaugi o scurtă descriere.',
@@ -62,7 +62,7 @@ class EvenimentController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nume' => 'required',
+            'nume_eveniment' => 'required',
             'data_eveniment' => 'required',
             'descriere' => 'required',
         ],

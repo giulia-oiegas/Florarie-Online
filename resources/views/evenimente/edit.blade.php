@@ -16,7 +16,7 @@
                     {{-- Nume Eveniment --}}
                     <div class="mb-3">
                         <label class="form-label">Nume Eveniment</label>
-                        <input type="text" name="nume" class="form-control @error('nume') is-invalid @enderror" value="{{ old('nume', $eveniment->nume_eveniment) }}" >
+                        <input type="text" name="nume_eveniment" class="form-control @error('nume') is-invalid @enderror" value="{{ old('nume', $eveniment->nume_eveniment) }}" >
                         @error('nume')
                             <div class="text-danger small">{{ $message }}</div>
                         @enderror
