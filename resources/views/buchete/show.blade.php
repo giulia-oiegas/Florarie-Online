@@ -8,7 +8,11 @@
 
 <p><strong>Preț:</strong> {{ $buchet->pret }} lei</p>
 <p><strong>Tip floare:</strong> {{ $buchet->tip_floare }}</p>
-<p><strong>Status:</strong> {{ $buchet->stoc_status }}</p>
+@if($buchet->descriere)
+    <p><strong>Descriere:</strong> {{ $buchet->descriere }}</p>
+@endif
+
+<p><strong>Status:</strong> {{ $buchet->status }}</p>
 
 <img src="{{ $buchet->imagine_url }}"
      class="img-fluid mt-3"

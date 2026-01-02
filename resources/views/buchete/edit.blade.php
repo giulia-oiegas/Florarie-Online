@@ -49,9 +49,15 @@
     @error('tip_floare')
             <div class="text-danger small">{{ $message }}</div>
      @enderror
-</div>
+            </div>
 
     </div>
+
+    <div class="mb-3">
+    <label class="form-label">Descriere</label>
+    <textarea name="descriere" class="form-control" rows="3">{{ old('descriere', $buchet->descriere) }}</textarea>
+    </div>
+
 
     <div class="mb-3">
         <label class="form-label">URL Imagine</label>
@@ -63,16 +69,21 @@
             </div>
 
     <div class="mb-3">
-        <label class="form-label">Status stoc</label>
-       <select name="status" class="form-control @error('status') is-invalid @enderror">
-    <option value="0" {{ $buchet->status == 0 ? 'selected' : '' }}>Disponibil</option>
-    <option value="1" {{ $buchet->status == 1 ? 'selected' : '' }}>Stoc limitat</option>
-    <option value="2" {{ $buchet->status == 2 ? 'selected' : '' }}>Indisponibil</option>
-</select>
-        @error('status')
-            <div class="text-danger small">{{ $message }}</div>
-        @enderror
+    <label class="form-label">Status</label>
+    <select name="status" class="form-control @error('status') is-invalid @enderror">
+        <option value="activ" {{ old('status', $buchet->status) == 'activ' ? 'selected' : '' }}>
+            activ
+        </option>
+        <option value="inactiv" {{ old('status', $buchet->status) == 'inactiv' ? 'selected' : '' }}>
+            inactiv
+        </option>
+    </select>
+
+    @error('status')
+        <div class="text-danger small">{{ $message }}</div>
+    @enderror
     </div>
+
 
     <button class="btn btn-outline-primary btn-sm">Update</button>
 </form>

@@ -62,7 +62,7 @@ class BuchetController extends Controller
             'nume' => 'required',
             'pret' => 'required|numeric|min:0', //pretul trebuie sa fie numar
             'tip_floare' => 'required',
-            'status' => 'required|in:0,1,2', //doar aceste valori sunt permise
+            'status' => 'required|in:activ,inactiv', //doar aceste valori sunt permise
             'imagine_url' => 'nullable|url', //link ul sa fie valid
             'descriere' => 'nullable',
         ],
@@ -123,7 +123,7 @@ class BuchetController extends Controller
             'nume' => 'required',
             'pret' => 'required|numeric|min:0',
             'tip_floare' => 'required',
-            'status' => 'required|in:0,1,2',
+            'status' => 'required|in:activ,inactiv',
             'imagine_url' => 'nullable|url',
             'descriere' => 'nullable',
         ],

@@ -54,6 +54,12 @@
     </div>
 
     <div class="mb-3">
+    <label class="form-label">Descriere</label>
+    <textarea name="descriere" class="form-control" rows="3">{{ old('descriere') }}</textarea>
+    </div>
+
+
+    <div class="mb-3">
         <label class="form-label">URL Imagine</label>
        <input type="text" class="form-control @error('imagine_url') is-invalid @enderror" name="imagine_url" value="{{ old('imagine_url') }}">
         @error('imagine_url')
@@ -62,16 +68,16 @@
     </div>
 
     <div class="mb-3">
-    <label class="form-label">Status stoc</label>
+    <label class="form-label">Status</label>
     <select name="status" class="form-control @error('status') is-invalid @enderror">
-    <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>Disponibil</option>
-    <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>Stoc limitat</option>
-    <option value="2" {{ old('status') == '2' ? 'selected' : '' }}>Indisponibil</option>
-</select>
+        <option value="activ" {{ old('status') == 'activ' ? 'selected' : '' }}>activ</option>
+        <option value="inactiv" {{ old('status') == 'inactiv' ? 'selected' : '' }}>inactiv</option>
+    </select>
 
-        @error('status')
-            <div class="text-danger small">{{ $message }}</div>
-        @enderror
+       @error('status')
+        <div class="text-danger small">{{ $message }}</div>
+    @enderror
+
     </div>
 
     <button class="btn btn-mov">Salvează</button>
