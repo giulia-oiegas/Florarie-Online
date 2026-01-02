@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BuchetController;
+use App\Http\Controllers\EvenimentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,9 @@ Route::get('/', [BuchetController::class, 'index']);
 
 // Pentru funcția bonus
 Route::get('/export-buchete', [BuchetController::class, 'export'])->name('buchete.export');
+
+//ruta pt evenimente
+Route::resource('evenimente', EvenimentController::class);
 
 //aceasta linie creeaza toate rutele de crud
 Route::resource('buchete', BuchetController::class);
