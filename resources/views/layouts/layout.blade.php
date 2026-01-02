@@ -19,6 +19,38 @@
         background-color: #4A148C;
         color: white;
     }
+    .pagination {
+        margin-bottom: 0;
+    }
+
+    .pagination .page-link {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    .pagination .page-item.active .page-link {
+        background-color: #6A1B9A;
+        border-color: #6A1B9A;
+        color: white;
+    }
+
+    .pagination .page-link:hover {
+        background-color: #E1BEE7;
+        color: #4A148C;
+    }
+    .pagination {
+    justify-content: center;
+    gap: 4px;
+}
+
+.pagination .page-item {
+    display: inline-block;
+}
+
+.pagination .page-item:first-child,
+.pagination .page-item:last-child {
+    display: none;
+}
 </style>
 
 </head>
