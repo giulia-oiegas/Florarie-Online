@@ -9,7 +9,7 @@
 
 <div class="d-flex justify-content-between align-items-center mb-4">
     {{-- Folosim clasa btn-mov ca să fie butonul mov --}}
-    <a href="#" class="btn btn-mov">
+    <a href="{{ route('evenimente.create') }}" class="btn btn-mov">
         Adaugă eveniment
     </a>
 </div>
@@ -37,13 +37,6 @@
                     <p class="card-text text-muted mt-3">
                         {{ Str::limit($eveniment->descriere, 120) }}
                     </p>
-
-                    {{-- LOCAȚIE (Dacă există) --}}
-                    @if(!empty($eveniment->locatie))
-                        <p class="small text-muted mb-0">
-                            📍 {{ $eveniment->locatie }}
-                        </p>
-                    @endif
                 </div>
 
                 {{-- FOOTER CARD - Butoane simple --}}

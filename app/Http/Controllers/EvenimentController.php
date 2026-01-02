@@ -14,6 +14,29 @@ class EvenimentController extends Controller
         return view('evenimente.index', compact('evenimente'));
     }
 
+    public function create()
+    {
+        return view('evenimente.create');
+    }
+
+    //salvare in bd - create partea 2
+    public function store(Request $request)
+    {
+        //validare date
+        $request->validate([
+            'nume' => 'required|max:255',
+            'data_eveniment' => 'required|date',
+            'descriere' => 'required',
+            'locatie' => 'nullable|string'
+        ]);
+
+        //creare eveniment nou
+        Eveniment::create($request->all());
+
+        return redirect()->route('evenimente.index')
+                         ->with('success', 'Evenimentul a fost adăugat cu succes!');
+    }
+
     public function destroy($id)
     {
         $eveniment = Eveniment::findOrFail($id);

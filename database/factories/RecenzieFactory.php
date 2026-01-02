@@ -23,7 +23,7 @@ class RecenzieFactory extends Factory
         'Cel mai frumos buchet de trandafiri pe care l-am cumpărat vreodată.',
         'Raport calitate-preț excelent. Cu siguranță voi mai comanda.',
         'Personal foarte amabil, m-au ajutat să aleg florile potrivite pentru eveniment.',
-        'Livratt cu grijă, florile au ajuns intacte. Mulțumesc!'
+        'Livrat cu grijă, florile au ajuns intacte. Mulțumesc!'
     ];
 
         return [
