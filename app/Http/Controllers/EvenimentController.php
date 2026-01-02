@@ -67,7 +67,7 @@ class EvenimentController extends Controller
             'descriere' => 'required',
         ],
         [
-            'nume.required' => 'Te rugăm să introduci numele evenimentului.',
+            'nume_eveniment.required' => 'Te rugăm să introduci numele evenimentului.',
             'data_eveniment.required' => 'Data evenimentului este obligatorie.',
             'descriere.required' => 'Descrierea evenimentului nu poate lipsi.',
             ]
