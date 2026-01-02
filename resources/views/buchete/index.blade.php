@@ -63,7 +63,6 @@
             <th>Nume</th>
             <th>Preț</th>
             <th>Tip floare</th>
-            <th>Descriere</th>
             <th>Status</th>
             <th>Acțiuni</th>
         </tr>
@@ -74,9 +73,6 @@
             <td>{{ $buchet->nume }}</td>
             <td>{{ $buchet->pret }} lei</td>
             <td>{{ $buchet->tip_floare }}</td>
-            <td>
-                {{ Str::limit($buchet->descriere, 50) }}
-            </td>
 
             <td>
                 @if($buchet->status === 'activ')
