@@ -16,7 +16,7 @@
                     {{-- Nume Eveniment --}}
                     <div class="mb-3">
                         <label class="form-label fw-bold">Nume Eveniment</label>
-                        <input type="text" name="nume" class="form-control" placeholder="Ex: Atelier Coronițe" required>
+                        <input type="text" name="nume_eveniment" class="form-control" placeholder="Ex: Atelier Coronițe" required>
                     </div>
 
                     {{-- Data și Ora --}}

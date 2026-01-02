@@ -24,10 +24,9 @@ class EvenimentController extends Controller
     {
         //validare date
         $request->validate([
-            'nume' => 'required|max:255',
+            'nume_eveniment' => 'required|max:255',
             'data_eveniment' => 'required|date',
             'descriere' => 'required',
-            'locatie' => 'nullable|string'
         ]);
 
         //creare eveniment nou
@@ -55,7 +54,7 @@ class EvenimentController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nume' => 'required',
+            'nume_eveniment' => 'required',
             'data_eveniment' => 'required',
             'descriere' => 'required',
         ]);
