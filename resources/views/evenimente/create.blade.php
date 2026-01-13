@@ -18,7 +18,7 @@
                         <label class="form-label fw-bold">Nume Eveniment</label>
                         <input type="text" name="nume_eveniment" class="form-control @error('nume') is-invalid @enderror" placeholder="Ex: Atelier Coronițe" value="{{ old('nume') }}" >
                     
-                        @error('nume')
+                        @error('nume_eveniment')
                             <div class="text-danger small">{{ $message }}</div>
                         @enderror
                     </div>
