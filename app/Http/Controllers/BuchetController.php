@@ -14,8 +14,8 @@ class BuchetController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
-    // Filtrare si cautare :permite utilizatorului să caute flori după tip sau preț maxim
+
+    // filtrare si cautare :permite utilizatorului să caute flori după tip sau preț maxim
     public function index(Request $request)
     {    // se incepe o interogare, fara executare inca
          $query = Buchet::query();
@@ -23,13 +23,13 @@ class BuchetController extends Controller
          // filtrare dupa tip floare
         if ($request->filled('tip_floare')) {
         $query->where('tip_floare', 'like', '%' . $request->tip_floare . '%');
-        }   
+        }
 
         // filtrare dupa pret maxim(buchetele mai ieftine de X lei)
         if ($request->filled('pret_maxim')) {
         $query->where('pret', '<=', $request->pret_maxim);
         }
-        
+
         //executare interogare cu sortare si paginare
          $buchete = $query->latest()->paginate(10);
 
@@ -68,7 +68,7 @@ class BuchetController extends Controller
             'descriere' => 'nullable',
         ],
         [
-        'pret.min' => 'Prețul nu poate fi negativ!', 
+        'pret.min' => 'Prețul nu poate fi negativ!',
         'pret.numeric' => 'Introdu doar cifre la preț.',
         'nume.required' => 'Numele este obligatoriu.',
         'tip_floare.required' => 'Te rugăm să alegi tipul florii.',
@@ -96,7 +96,7 @@ class BuchetController extends Controller
         $buchet = Buchet::with('recenzii')->findOrFail($id);
 
         //trimitem datele catre view-ul de detalii
-        return view('buchete.show', compact('buchet'));   
+        return view('buchete.show', compact('buchet'));
     }
 
     /**
@@ -132,15 +132,15 @@ class BuchetController extends Controller
             'descriere' => 'nullable',
         ],
         [//mesaj la eroare
-            
-        'pret.min' => 'Prețul nu poate fi negativ!', 
+
+        'pret.min' => 'Prețul nu poate fi negativ!',
         'pret.numeric' => 'Introdu doar cifre la preț.',
         'nume.required' => 'Numele este obligatoriu.',
         'tip_floare.required' => 'Te rugăm să alegi tipul florii.',
         'imagine_url.url' => 'Link-ul imaginii nu este valid.',
         'status.required' => 'Te rugăm să alegi statusul buchetului.',
         ]
-    
+
     );
         //gasim buchetul si actualizam datele
         $buchet = Buchet::findOrFail($id);
@@ -150,14 +150,14 @@ class BuchetController extends Controller
         return redirect()->route('buchete.index')
             ->with('success', 'Buchetul a fost actualizat!');
     }
-     
+
 
 
     //Exportă lista de buchete în format CSV
    public function export() {
     $buchete = \App\Models\Buchet::all();
     $csvFileName = 'lista_buchete.csv';
-    
+
     //// Setăm antetele (headers) HTTP pentru a forța browserul să descarce fișierul
     $headers = [
         "Content-type" => "text/csv", // Tipul de fișier este CSV
@@ -165,20 +165,20 @@ class BuchetController extends Controller
         "Pragma" => "no-cache", // Previne stocarea în cache
         "Expires" => "0" // Fișierul expiră imediat
     ];
-     
+
     // Creăm un stream de date (flux) pentru descărcare
      return response()->stream(function() use ($buchete) {
        // Deschidem un fișier temporar în memoria de ieșire a PHP-ului
         $file = fopen('php://output', 'w');
         fputcsv($file, ['ID', 'Nume', 'Pret', 'Tip Floare']);
-       
+
         // Se parcurge fiecare buchet din baza de date
         foreach ($buchete as $buchet) {
             // Adăugăm datele fiecărui buchet ca un rând nou în CSV
             fputcsv($file, [
-                $buchet->id, 
-                $buchet->nume, 
-                $buchet->pret, 
+                $buchet->id,
+                $buchet->nume,
+                $buchet->pret,
                 $buchet->tip_floare
             ]);
         }
