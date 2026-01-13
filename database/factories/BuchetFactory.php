@@ -32,7 +32,6 @@ class BuchetFactory extends Factory
     ];
 
         return [
-            //genereaza 3 cuv aleatoare pt nume (ex: "Buchet Mare Roz)
             'nume' => $this->faker->randomElement($numeBuchete),
 
             //pret intre 50 si 500 lei
